@@ -273,9 +273,6 @@ op.grid(row=1, padx=5, pady=3)
 frame = tk.Frame(op)                       # Frame da tela do jogo em si
 frame.grid(row=0,column=0,padx=10,pady=5)
 
-botoes = tk.Frame(op)                      # Frame dos Botões do jogo
-botoes.grid(row=1,column=0,pady=3)
-
 # Menu Superior
 menu_button = tk.Menu(janela)
 janela.config(menu=menu_button)
