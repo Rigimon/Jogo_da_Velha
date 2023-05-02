@@ -151,15 +151,24 @@ def PlayerAction(i,j):
                 else:
                     break
     else:
-        if player % 2 == 1:
-            if var[i][j] == 0:
-                var[i][j] = 1
-            cabo = Verify()
-        else:
-            if var[i][j] == 0:
-                var[i][j] = 2
-            cabo = Verify()
-        player += 1
+        if fim() == False:
+            while True:
+                if player % 2 == 1:
+                    if var[i][j] == 0:
+                        var[i][j] = 1
+                        cabo = Verify()
+                        player += 1
+                        break
+                    else:
+                        break
+                else:
+                    if var[i][j] == 0:
+                        var[i][j] = 2
+                        cabo = Verify()
+                        player += 1
+                        break
+                    else:
+                        break
 
 # Ação do Computador, onde ele escolhe jogar
 def ComputerAction():
