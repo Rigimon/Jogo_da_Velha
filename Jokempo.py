@@ -4,19 +4,20 @@
 # Importando Bibliotecas
 import tkinter as tk
 from tkinter import messagebox
+import customtkinter as ctk
 import random
 
 # Resposta do computaor e verificação de vitória
 def jokempo():
 
     try:
-        if var.get() == 1:
+        if var.get() == 'pedra':
             textol = 'pedra'
 
-        if var.get() == 2:
+        if var.get() == 'papel':
             textol = 'papel'
 
-        if var.get() == 3:
+        if var.get() == 'tesoura':
             textol = 'tesoura'
 
         lista = ['pedra','papel','tesoura']
@@ -40,33 +41,33 @@ def jokempo():
 # Criação da Janela do jogo
 janela = tk.Tk()
 janela.title('Jokempo')
+janela.resizable(False,False)
+janela.config(background='LightSkyBlue')
 
 # Dividindo os Frames do jogo, Frame -> Divisões de tela
-op = tk.LabelFrame(janela, text='Escolha:')
-op.grid(row=0, padx=15)
+op = ctk.CTkFrame(janela,fg_color='LightSkyBlue')
+op.grid(row=0, padx=15,pady=5)
 
-botao = tk.Frame(janela)
+botao = tk.Frame(janela,background='LightSkyBlue')
 botao.grid(row=2)
 
 # Variavel para identificar qual a escolha do usuario
-var = tk.IntVar()
-var.set(0)
+var = tk.StringVar()
 
 # Escolha do usuario
-pedra = tk.Radiobutton(op, text='pedra', variable=var, value=1).grid(column=0, row=2)
-papel = tk.Radiobutton(op, text='papel', variable=var, value=2).grid(column=1, row=2)
-tesoura = tk.Radiobutton(op, text='tesoura', variable=var, value=3).grid(column=2, row=2)
+Texto = ctk.CTkLabel(op, text='Escolha:',text_color='White').grid()
+option = ctk.CTkOptionMenu(op, values=["pedra", "papel","tesoura"], variable=var).grid(padx=5,pady=5)
 
 # Escolha do Computador
 resposta = tk.Label(janela, text="")
 resposta.grid(row=1)
 
 # Botão para jogar
-jogar = tk.Button(botao, text='Jogar', command=jokempo)
-jogar.grid(column=0,row=1)
+jogar = ctk.CTkButton(botao, text='Jogar',width=3, command=jokempo)
+jogar.grid(column=0,row=1,padx=1,pady=3)
 
 # Botão para fechar o jogo
-sair = tk.Button(botao, text='Sair', command=janela.destroy)
-sair.grid(column=1,row=1)
+sair = ctk.CTkButton(botao, text='Sair',width=3, command=janela.destroy)
+sair.grid(column=1,row=1,padx=1,pady=3)
 
 janela.mainloop()
